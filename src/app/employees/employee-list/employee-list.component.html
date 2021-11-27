@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="header">
+        <h5 class="text-center">
+            Employee Info
+        </h5>
+        <!--Search-->
+        <div class="form-group">
+            <input class="form-control" type ="text"
+            placeholder="search here..."
+            [(ngModel)] ="filter">
+
+        </div>
+        <div>
+           <!--Ad-->d
+            <a [routerLink] = "['employee']"  class="btn btn-primary" style ="float :right;margin-bottom:10px" > Add employee</a>
+        </div>
+    </div>
+    <!--Table list-->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                   Gender
+                </th>
+                <th>
+                    Phone no
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of this.empService.employees | filter: filter | paginate: {itemsPerPage: 5, currentPage:page} "  >
+                <td (click)="populateForm(emp)">{{emp.EmpId}}</td>
+                <td (click)="populateForm(emp)">{{emp.FirstName}}</td>
+                <td (click)="populateForm(emp)">{{emp.LastName}}</td>
+                <td (click)="populateForm(emp)">{{emp.EmpAddress}}</td>
+                <td (click)="populateForm(emp)">{{emp.Age}}</td>
+                <td (click)="populateForm(emp)">{{emp.Gender}}</td>
+                <td (click)="populateForm(emp)">{{emp.PhoneNo}}</td>
+               
+                <td>
+                    <button class="btn btn-sm btn-outline-danger" (click) ="deleteEmployee(emp.EmployeeId)">Delete</button>&nbsp;
+                    <button class="btn btn-sm btn-info" style="margin-left:10px"  (click)="updateEmployee(emp.EmployeeId)">Edit</button>
+                  
+                </td>
+
+            </tr>
+        </tbody>
+
+
+
+    </table>
+    <div class="footer">
+        <!--pagination-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+    </div>
+
+</div>

@@ -1,0 +1,87 @@
+<form name="empform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <!--employee id-->
+    <input type="hidden" name="EmployeeId" [ngModel]="empService.formData.EmployeeId" />
+
+    <!--First name-->
+    <div class="form-group">
+
+        <label>First Name</label>
+        <input name="FirstName" #LastName="ngModel" [ngModel]="empService.formData.FirstName"
+            class="form-control" placeholder="Enter first name" minlength="10" maxlength="25" required
+            [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
+        <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
+
+            <div *ngIf="FirstName.errors.required">
+                First Name is required</div>
+        </div>
+    </div>
+
+     <!--Last name-->
+     <div class="form-group">
+
+        <label>Last Name</label>
+        <input name="LastName" #LastName="ngModel" [ngModel]="empService.formData.FirstName"
+            class="form-control" placeholder="Enter last name" minlength="10" maxlength="25" required
+            [ngClass]="{'is-invalid':LastName.touched && LastName.invalid}" />
+        <div class="validation-error" *ngIf="LastName.touched && LastName.invalid">
+
+            <div *ngIf="LastName.errors.required">
+                Last Name is required</div>
+        </div>
+    </div>
+
+    <!--EmpAddress-->
+    <div class="form-group">
+
+        <label>EmpAddress</label>
+        <input name="EmpAddress" #EmpAddress="ngModel" [ngModel]="empService.formData.EmpAddress"
+            class="form-control" placeholder="Enter EmpAddress"  required
+            [ngClass]="{'is-invalid':EmpAddress.touched && EmpAddress.invalid}" />
+        <div class="validation-error" *ngIf="EmpAddress.touched && EmpAddress.invalid">
+
+            <div *ngIf="EmpAddress.errors.required">
+                EmpAddress is required</div>
+        </div>
+    </div>
+    <!--Age-->
+    <div class="form-group">
+
+        <label>Age</label>
+        <input type="text" name="Age" id="Age" #Age="ngModel"
+            [ngModel]="empService.formData.Age" class="form-control" required
+            [ngClass]="{'is-invalid':Age.touched && Age.invalid}" />
+        <div class="validation-error" *ngIf="Age.touched && Age.invalid">
+
+            <div *ngIf="Age.errors.required">
+                Age is required</div>
+        </div>
+    </div>
+
+     <!--PhoneNo-->
+     <div class="form-group">
+
+        <label>PhoneNo</label>
+        <input type="text" name="PhoneNo" id="PhoneNo" #PhoneNo="ngModel"
+            [ngModel]="empService.formData.PhoneNo" class="form-control" required
+            [ngClass]="{'is-invalid':PhoneNo.touched && PhoneNo.invalid}" />
+        <div class="validation-error" *ngIf="PhoneNo.touched && PhoneNo.invalid">
+
+            <div *ngIf="PhoneNo.errors.required">
+                PhoneNo is required</div>
+        </div>
+    </div>
+    
+
+    
+
+    <!--submit button-->
+    <br>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">Submit</button>
+    </div>
+
+
+
+
+</form>
